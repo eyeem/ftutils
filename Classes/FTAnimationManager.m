@@ -242,7 +242,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   return overshootPoint;
 }
 
-- (CAAnimation *)backOutAnimationFor:(UIView *)view withFade:(BOOL)fade direction:(FTAnimationDirection)direction 
+- (CAAnimation *)backOutAnimationFor:(UIView *)view withFade:(BOOL)shouldFade direction:(FTAnimationDirection)direction
                             duration:(NSTimeInterval)duration delegate:(id)delegate 
                        startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   CGPoint path[3] = {
@@ -257,7 +257,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   animation.path = thePath;
   CGPathRelease(thePath);
   NSArray *animations;
-  if(fade) {
+  if(shouldFade) {
     CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:YES];
     fade.beginTime = duration * .5f;
     fade.fillMode = kCAFillModeForwards;
@@ -270,7 +270,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                             name:kFTAnimationBackOut type:kFTAnimationTypeOut];
 }
 
-- (CAAnimation *)backInAnimationFor:(UIView *)view withFade:(BOOL)fade direction:(FTAnimationDirection)direction 
+- (CAAnimation *)backInAnimationFor:(UIView *)view withFade:(BOOL)shouldFade direction:(FTAnimationDirection)direction 
                            duration:(NSTimeInterval)duration delegate:(id)delegate 
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   CGPoint path[3] = {
@@ -285,7 +285,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   animation.path = thePath;
   CGPathRelease(thePath);
   NSArray *animations;
-  if(fade) {
+  if(shouldFade) {
     CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:NO];
     fade.fillMode = kCAFillModeForwards;
     
@@ -301,7 +301,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 
 #pragma mark -
 
-- (CAAnimation *)backOutAnimationFor:(UIView *)view withFade:(BOOL)fade direction:(FTAnimationDirection)direction inView:(UIView*)enclosingView
+- (CAAnimation *)backOutAnimationFor:(UIView *)view withFade:(BOOL)shouldFade direction:(FTAnimationDirection)direction inView:(UIView*)enclosingView
                             duration:(NSTimeInterval)duration delegate:(id)delegate 
                        startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
 	CGPoint path[3] = {
@@ -316,7 +316,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 	animation.path = thePath;
 	CGPathRelease(thePath);
 	NSArray *animations;
-	if(fade) {
+	if(shouldFade) {
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:YES];
 		fade.beginTime = duration * .5f;
 		fade.fillMode = kCAFillModeForwards;
@@ -330,7 +330,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 }
 
 
-- (CAAnimation *)backInAnimationFor:(UIView *)view withFade:(BOOL)fade direction:(FTAnimationDirection)direction inView:(UIView*)enclosingView
+- (CAAnimation *)backInAnimationFor:(UIView *)view withFade:(BOOL)shouldFade direction:(FTAnimationDirection)direction inView:(UIView*)enclosingView
                            duration:(NSTimeInterval)duration delegate:(id)delegate 
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
 	CGPoint path[3] = {
@@ -345,7 +345,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 	animation.path = thePath;
 	CGPathRelease(thePath);
 	NSArray *animations;
-	if(fade) {
+	if(shouldFade) {
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:NO];
 		fade.fillMode = kCAFillModeForwards;
 		
