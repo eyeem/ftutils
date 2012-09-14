@@ -98,15 +98,17 @@ static NSString *const FTUtilsVersionString = @"1.1.0";
 /**
  Create a UIColor with r,g,b values between 0.0 and 1.0.
 */
+#ifndef RGBCOLOR
 #define RGBCOLOR(r,g,b) \
 [UIColor colorWithRed:r/256.f green:g/256.f blue:b/256.f alpha:1.f]
-
+#endif
 /**
  Create a UIColor with r,g,b,a values between 0.0 and 1.0.
 */
+#ifndef RGBACOLOR
 #define RGBACOLOR(r,g,b,a) \
 [UIColor colorWithRed:r/256.f green:g/256.f blue:b/256.f alpha:a]
-
+#endif
 /**
  Create a UIColor from a hex value.
  
