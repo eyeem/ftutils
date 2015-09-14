@@ -33,7 +33,7 @@
 #pragma mark - Version
 
 static const NSUInteger FTUtilsVersion = 010100;
-static NSString *const FTUtilsVersionString = @"1.1.0";
+//static NSString *const FTUtilsVersionString = @"1.1.0";
 
 #pragma mark - Logging
 ///---------------------------------------------------------------------------
